@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Stack,
   Text,
   Heading,
   Avatar,
@@ -24,16 +23,14 @@ export default function Announcement() {
         <AnnouncementPost />
         <AnnouncementPost />
       </Center>
-
     </Box>
-
   )
 }
 
 function AnnouncementPost() {
   return (
-    <Box bgColor='gray.50' my={5} p={3} borderRadius={25} boxShadow='md' w={['80vw', '75vw', '700px']}>
-      <Flex alignItems='center' my={2}>
+    <Box bgColor='gray.50' my={5} p={5} borderRadius={25} boxShadow='md' w={['80vw', '75vw', '700px']}>
+      <Flex alignItems='center' mb={5}>
         <Avatar name='Lastname, First Middle' size='sm' mr={2} />
         <Box>
           <Heading size='xs'>
@@ -44,7 +41,7 @@ function AnnouncementPost() {
           </Text>
         </Box>
         <Spacer />
-        <IconButton icon={<HiOutlineDotsVertical />} borderRadius={100} />
+        <IconButton icon={<HiOutlineDotsVertical />} borderRadius={100} variant='ghost'/>
       </Flex>
       <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa odio labore a voluptatibus voluptatum ea tenetur quo nesciunt expedita qui possimus, iste delectus placeat sunt impedit enim. Voluptate, eum sit.</Text>
       <Image src={demopic} my={2}/>

@@ -52,7 +52,7 @@ function DepartmentCard() {
   return(
     <Box bgColor='gray.50' p={5} borderRadius={25} maxWidth='500px' m={2}>
       <Heading size='xs' mb={2}>
-        Educational Background
+        Faculty Count
       </Heading>
       <Doughnut data={data}/>
       <Box color='gray.500' mt={2}>

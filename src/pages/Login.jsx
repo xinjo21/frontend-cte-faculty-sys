@@ -62,9 +62,11 @@ function Login() {
               </InputRightElement>
             </InputGroup>
           </FormControl>
+
           <Link to='/dashboard/announcement'>
             <Button w='100%' colorScheme='blue'>Login</Button>
           </Link>
+
 
           <Box py={5}>
             <Center>
