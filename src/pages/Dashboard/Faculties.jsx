@@ -20,7 +20,6 @@ export default function Faculties() {
         <FacultyProfile />
         <FacultyProfile />
         <FacultyProfile />
-
       </Flex>
 
     </Box>
@@ -29,11 +28,11 @@ export default function Faculties() {
 
 function FacultyProfile() {
   return (
-    <Box bgColor='gray.50' p={5} borderRadius={25} w='350px' m={2}>
-      <Center mb={2} >
-        <Image w='300px' h='400px' src={CTE_logo} objectFit='cover' borderRadius={25}/>
+    <Box bgColor='gray.50' p={3} borderRadius={25} w='200px' m={2}>
+      <Center mb={4} >
+        <Image boxSize='175px' src={CTE_logo} objectFit='cover' borderRadius={25}/>
       </Center>
-      <Heading size='md'>Rupert Sierra</Heading>
+      <Heading size='md' mb={2}>Rupert Sierra</Heading>
       <Text fontSize='sm' color='gray.600'>Bachelor of Secondary Education Major in Science</Text>
     </Box>
   )

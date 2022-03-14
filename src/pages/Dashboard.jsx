@@ -7,6 +7,12 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react'
 
+import {
+  HiOutlineAnnotation,
+  HiOutlineChartBar,
+  HiOutlineUserGroup,
+  HiOutlineClipboardList,
+} from 'react-icons/hi'
 
 import DefaultNav from './Dashboard/components/DefaultNav'
 import CompressedNav from './Dashboard/components/CompressedNav'
@@ -14,6 +20,29 @@ import MobileNav from './Dashboard/components/MobileNav'
 
 var mobileWidthMin = '(min-width: 30em)'
 var screenWidthMin = '(min-width: 48em)'
+
+const btnDetails = [
+  {
+    'name': 'Announcement',
+    'link': 'announcement',
+    'icon': HiOutlineAnnotation,
+  },
+  {
+    'name': 'Analytics',
+    'link': 'analytics',
+    'icon': HiOutlineChartBar,
+  },
+  {
+    'name': 'Faculties',
+    'link': 'faculties',
+    'icon': HiOutlineUserGroup,
+  },
+  {
+    'name': 'Schedule',
+    'link': 'schedule',
+    'icon': HiOutlineClipboardList,
+  },
+]
 
 function Dashboard() {
   const [compressedView] = useMediaQuery(screenWidthMin)
@@ -32,11 +61,10 @@ function Dashboard() {
       {
         mobileView ?
           nav && compressedView ?
-            <DefaultNav nav={navClicked} />
+            <DefaultNav nav={navClicked} details={btnDetails} />
             :
-            <CompressedNav nav={navClicked} />
-          : <MobileNav />
-
+            <CompressedNav nav={navClicked} details={btnDetails} />
+          : <MobileNav details={btnDetails} />
       }
     </Flex>
   )
