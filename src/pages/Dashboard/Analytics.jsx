@@ -1,8 +1,10 @@
 import {
   Box,
-  Flex,
   Heading,
   Text,
+  Spacer,
+  Center,
+  Stack
 } from '@chakra-ui/react'
 
 import {
@@ -23,17 +25,26 @@ export default function Analytics() {
   return (
     <Box>
       <Heading size='lg' mb={5}>Analytics</Heading>
-      <Flex flexWrap='wrap' justifyContent='center'>
-        <OnStudyLeave />
+      <Center flexDirection='column' alignItems='stretch'>
+        <Center flexDirection={['column','row']} alignItems='stretch' alignContent='stretch' justifyContent='space-around'>
+          <Stack mb={5}>
+            <NumberCard cardName='Current Available Faculty' data='5' />
+            <Spacer />
+            <NumberCard cardName='On Class' data='12' />
+            <Spacer />
+            <NumberCard cardName='On Study Leave' data='12' />
+          </Stack>
 
-      </Flex>
-      <Flex flexWrap='wrap' justifyContent='center'>
-        <FacultyYearsInService />
-        <EducationalBGCard />
-        <DepartmentCard />
-      </Flex>
+          <EducationalBGCard />
+          <DepartmentCard />
+        </Center>
+        <Box p={[0, 8]}>
+          <FacultyYearsInService />
 
-    </Box>
+        </Box>
+
+      </Center>
+    </Box >
   )
 }
 
@@ -54,7 +65,7 @@ function DepartmentCard() {
   };
 
   return (
-    <Box bgColor='gray.50' p={5} borderRadius={25} maxWidth='500px' m={2}>
+    <Box bgColor='gray.50' p={5} borderRadius={25} mb={5} boxShadow='md' >
       <Heading size='xs' mb={2}>
         Faculty per Department Count
       </Heading>
@@ -84,7 +95,7 @@ function EducationalBGCard() {
   };
 
   return (
-    <Box bgColor='gray.50' p={5} borderRadius={25} maxWidth='500px' m={2}>
+    <Box bgColor='gray.50' p={5} borderRadius={25} mb={5} boxShadow='md' >
       <Heading size='xs' mb={2}>
         Faculty Education Background
       </Heading>
@@ -130,7 +141,7 @@ function FacultyYearsInService() {
   };
 
   return (
-    <Box bgColor='gray.50' p={5} borderRadius={25} width={['400px', '500px']} m={2}>
+    <Box bgColor='gray.50' p={5} borderRadius={25} boxShadow='md' >
       <Heading size='xs' mb={2}>
         Faculty Years in Service
       </Heading>
@@ -146,16 +157,13 @@ function FacultyYearsInService() {
   )
 }
 
-function OnStudyLeave() {
+function NumberCard({ cardName, data }) {
   return (
-    <Box bgColor='gray.50' p={5} borderRadius={25} m={2} w='150px' h='125px'>
+    <Box bgColor='gray.50' p={5} borderRadius={25} w='175px' boxShadow='md' >
       <Heading size='xs' mb={2}>
-        On Study Leave
+        {cardName}
       </Heading>
-
-      <Box color='gray.500' mt={2}>
-        <Heading>14</Heading>
-      </Box>
+      <Heading color='gray.500'>{data}</Heading>
     </Box>
   )
 }

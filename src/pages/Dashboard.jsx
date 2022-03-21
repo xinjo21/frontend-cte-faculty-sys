@@ -42,6 +42,7 @@ const btnDetails = [
     'link': 'schedule',
     'icon': HiOutlineClipboardList,
   },
+  
 ]
 
 function Dashboard() {
