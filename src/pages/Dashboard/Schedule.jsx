@@ -7,7 +7,7 @@ import {
 export default function Schedule(){
   return(
     <Box>
-      <Heading size='lg' mb={5}>Announcement</Heading>
+      <Heading size='lg' mb={5}>Schedule</Heading>
     </Box>
   )
 }
