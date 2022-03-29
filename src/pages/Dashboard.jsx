@@ -12,6 +12,7 @@ import {
   HiOutlineChartBar,
   HiOutlineUserGroup,
   HiOutlineClipboardList,
+  HiDocument,
 } from 'react-icons/hi'
 
 import DefaultNav from './Dashboard/components/DefaultNav'
@@ -42,7 +43,11 @@ const btnDetails = [
     'link': 'schedule',
     'icon': HiOutlineClipboardList,
   },
-  
+  {
+    'name': 'Requests',
+    'link': 'requests',
+    'icon': HiDocument,
+  },
 ]
 
 function Dashboard() {

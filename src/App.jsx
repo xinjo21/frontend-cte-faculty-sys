@@ -10,7 +10,7 @@ import Announcement from './pages/Dashboard/Announcement'
 import Faculties from './pages/Dashboard/Faculties'
 import Profile from './pages/Dashboard/Profile'
 import Schedule from './pages/Dashboard/Schedule'
-
+import Requests from './pages/Dashboard/Requests'
 
 
 function App() {
@@ -25,6 +25,7 @@ function App() {
           <Route path='faculties' element={<Faculties/>}/>
           <Route path='profile' element={<Profile/>}/>
           <Route path='schedule' element={<Schedule/>}/>
+          <Route path='requests' element={<Requests/>}/>
 
         </Route>
         <Route path='*' element={<Error />} />

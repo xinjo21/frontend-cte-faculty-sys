@@ -15,14 +15,14 @@ import CTE_logo from '../../../../media/samplepic.JPG'
 
 export default function InformationCard() {
   return (
-    <Box bgColor='gray.50' h='78vh' borderRadius={25} w={['80vw', '300px']}>
+    <Box bgColor='gray.50' h='100%' pb={2} borderRadius={25} w={['80vw', '300px']}>
       <Center flexDirection='column' p={5}>
         <Image boxSize='175px' src={CTE_logo} objectFit='cover' borderRadius='full' mb={5} />
         <Heading size='sm'>FirstName LastName</Heading>
       </Center>
       <Table size='sm' variant='unstyled'>
         <Tr>
-          <Th>Position</Th>
+          <Th>College Title</Th>
           <Td>College Dean</Td>
         </Tr>
         <Tr>
@@ -33,12 +33,12 @@ export default function InformationCard() {
           <Th>Employment Date</Th>
           <Td>April 22, 2021</Td>
         </Tr>
-        <Tr>
+        {/* <Tr>
           <Th>Status</Th>
           <Td>
             <Tag colorScheme='green'>Available</Tag>
           </Td>
-        </Tr>
+        </Tr> */}
       </Table>
       <Center>
         <Button m={2} colorScheme='blueCTE' w='90%'>

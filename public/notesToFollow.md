@@ -40,3 +40,8 @@ Additional:
   Request Page:
     - Activities
     - Meeting
+
+
+ADDITIONAL ADMIN:
+  - User list
+  - Memos forward and receive

@@ -16,8 +16,6 @@ export default function Announcement() {
         <PostAnnouncement />
 
         <AnnouncementPost />
-        <AnnouncementPost />
-        <AnnouncementPost />
       </Center>
     </Box>
   )
