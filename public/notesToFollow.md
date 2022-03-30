@@ -45,3 +45,4 @@ Additional:
 ADDITIONAL ADMIN:
   - User list
   - Memos forward and receive
+  - Add new user

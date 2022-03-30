@@ -13,6 +13,7 @@ import {
   HiOutlineUserGroup,
   HiOutlineClipboardList,
   HiDocument,
+  HiUserGroup,
 } from 'react-icons/hi'
 
 import DefaultNav from './Dashboard/components/DefaultNav'
@@ -47,6 +48,11 @@ const btnDetails = [
     'name': 'Requests',
     'link': 'requests',
     'icon': HiDocument,
+  },
+  {
+    'name': 'Users',
+    'link': 'users',
+    'icon': HiUserGroup,
   },
 ]
 

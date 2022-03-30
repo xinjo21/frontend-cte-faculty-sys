@@ -9,24 +9,55 @@ import {
   Stack,
   Button,
   Select,
-  Spacer
+  Spacer,
+  useToast
 } from '@chakra-ui/react'
 
 export default function ProfileCard() {
+  const toast = useToast()
   const [editable, setEditable] = useState(true)
 
   return (
     <Stack spacing={5}>
       <Stack direction='row' pos='sticky' top='5' zIndex='1'>
         <Spacer />
-        <Button colorScheme={editable ? 'yellow' : 'green'} onClick={() => setEditable(!editable)}>
+        <Button colorScheme={editable ? 'yellow' : 'green'} onClick={
+          () => {
+            setEditable(!editable)
+            editable ?
+              toast({
+                title: 'Editing enabled',
+                status: 'info',
+                position: 'top',
+                duration: 5000,
+                isClosable: true,
+              })
+              :
+              toast({
+                title: 'Information saved!',
+                status: 'success',
+                position: 'top',
+                duration: 5000,
+                isClosable: true,
+              })
+          }}>
           {
             editable ?
               'Edit' :
               'Save'
           }
         </Button>
-        <Button colorScheme='red'>Discard</Button>
+        <Button colorScheme='red' onClick={
+          () => {
+            toast({
+              title: 'Changes Discarded',
+              status: 'warning',
+              position: 'top',
+              duration: 5000,
+              isClosable: true,
+            })
+          }
+        }>Discard</Button>
       </Stack >
       {/* Personal Information */}
       <Box bgColor='gray.50' borderRadius={25} p={5}>
@@ -67,7 +98,7 @@ export default function ProfileCard() {
             </FormControl>
             <FormControl mb={5}>
               <FormLabel htmlFor='religion'>Religion</FormLabel>
-              <Input isReadOnly={editable} id='religion' value='asd' />
+              <Input isReadOnly={editable} id='religion'/>
             </FormControl>
           </Box>
         </Flex>
@@ -119,6 +150,7 @@ export default function ProfileCard() {
         </Flex>
       </Box>
 
+      {/* Security */}
       <Box bgColor='gray.50' borderRadius={25} p={5}>
         <Heading size='md' color='gray.500' mb={5}>Security</Heading>
         <Flex flexDirection={['column', 'row']}>

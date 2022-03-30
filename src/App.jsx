@@ -11,6 +11,7 @@ import Faculties from './pages/Dashboard/Faculties'
 import Profile from './pages/Dashboard/Profile'
 import Schedule from './pages/Dashboard/Schedule'
 import Requests from './pages/Dashboard/Requests'
+import Users from './pages/Dashboard/Users'
 
 
 function App() {
@@ -20,13 +21,14 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Login />} />
         <Route exact path='/dashboard' element={<Dashboard />}>
-          <Route index path='announcement' element={<Announcement/>}/>
-          <Route path='analytics' element={<Analytics/>}/>
-          <Route path='faculties' element={<Faculties/>}/>
-          <Route path='profile' element={<Profile/>}/>
-          <Route path='schedule' element={<Schedule/>}/>
-          <Route path='requests' element={<Requests/>}/>
-
+          <Route index path='announcement' element={<Announcement />} />
+          <Route path='analytics' element={<Analytics />} />
+          <Route path='faculties' element={<Faculties />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='schedule' element={<Schedule />} />
+          <Route path='requests' element={<Requests />} />
+          <Route path='requests' element={<Requests />} />
+          <Route path='users' element={<Users />} />
         </Route>
         <Route path='*' element={<Error />} />
       </Routes>

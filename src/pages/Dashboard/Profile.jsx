@@ -12,13 +12,14 @@ export default function Profile() {
 	return (
 		<Box w='100%'>
 			<Heading size='lg' mb={5}>Profile</Heading>
-			<Stack direction={['column', 'row']}>
+			<Stack direction={['column', 'column', 'column', 'row']}>
 				<InformationCard />
+
 
 				<Stack w={['80vw', '54vw']}>
 					<ProfileCard />
 				</Stack>
-				
+
 			</Stack>
 
 
