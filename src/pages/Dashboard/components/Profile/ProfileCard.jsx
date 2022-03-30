@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import { useState } from 'react'
 import {
   Box,
@@ -16,6 +18,20 @@ import {
 export default function ProfileCard() {
   const toast = useToast()
   const [editable, setEditable] = useState(true)
+
+  const [ profileLname, setProfileLname ] = useState('')
+  const [ profileFname, setprofileFname ] = useState('')
+  const [ profileMname, setProfileMname ] = useState('')
+  const [ profileGender, setGender ] = useState('')
+  const [ profileAddress, setProfileAddress ] = useState('')
+  const [ profileBirthDate, setProfileBirthDat ] = useState('')
+  const [ profilePicture, setProfilePicture ] = useState('')
+  const [ profileDegree, setProfileDegree ] = useState('')
+  const [ profileDepartment, setProfileDeparment ] = useState('')
+  const [ profileDateEmployed, setProfileDateEmployed ] = useState('')
+  const [ profileReligion, setProfileReligion ] = useState('')
+  const [ profileCivilStatus, setProfileCivilStatus ] = useState('')
+
 
   return (
     <Stack spacing={5}>

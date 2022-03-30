@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import axios from axios
+
 import {
   Box,
   Textarea,
@@ -11,15 +14,30 @@ import {
   ModalOverlay,
   ModalHeader,
   ModalCloseButton,
-  ModalBody, 
+  ModalBody,
   ModalFooter,
   ModalContent,
   useDisclosure,
 } from '@chakra-ui/react'
 
 export default function PostAnnouncement() {
-
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const [announcementType, setAnnouncementType] = useState('')
+  const [announcementDetails, setAnnouncementDetails] = useState('')
+  const [announcementImage, setAnnouncementImage] = useState('')
+
+  const Add = () => {
+    axios
+      .post('http://localhost:8000/api/announcements', {
+        announcementType: announcementType,
+        announcementDetails: announcementDetails,
+        announcementImage: announcementImage,
+      })
+      .then((res) => {
+        res ? alert('Success') : alert('Failed')
+      })
+  }
 
 
   return (
@@ -39,7 +57,7 @@ export default function PostAnnouncement() {
             <Stack spacing={5}>
               <FormControl>
                 <FormLabel htmlFor='announcementType' fontSize='sm'>Announcement Type</FormLabel>
-                <Select placeholder='Select Type' size='sm' id='announcementType'>
+                <Select placeholder='Select Type' size='sm' id='announcementType' name='announcementType' onChange={(e) => setAnnouncementType(e.target.value)}>
                   <option value="announcement">Announcement</option>
                   <option value="memo">Memorandum Order</option>
                   <option value="activity">Activity</option>
@@ -49,18 +67,18 @@ export default function PostAnnouncement() {
 
               <FormControl>
                 <FormLabel htmlFor='postDetails' fontSize='sm'>Details</FormLabel>
-                <Textarea size='sm' id='postDetails' />
+                <Textarea size='sm' id='postDetails' name='AnnouncementDetails' onChange={(e) => setAnnouncementDetails(e.target.value)}/>
               </FormControl>
 
               <FormControl>
                 <FormLabel htmlFor='postPicture' fontSize='sm'>Upload Image</FormLabel>
-                <Input type='file' id='postPicture' />
+                <Input type='file' id='postPicture' name='AnnouncementImage' onChange={(e) => setAnnouncementImage(e.target.value)}/>
               </FormControl>
             </Stack>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme='red' mr={2} onClick={onClose}>Discard</Button>
-            <Button colorScheme='blue'>Announce</Button>
+            <Button colorScheme='blue' onClick={() => Add()}>Announce</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
