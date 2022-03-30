@@ -1,24 +1,33 @@
-import {
-  Box,
-  Heading,
-  Center,
-} from '@chakra-ui/react'
+import { useEffect, useState } from "react";
+import { Box, Heading, Center } from "@chakra-ui/react";
+import axios from "axios";
 
-import AnnouncementPost from './components/Announcement/AnnouncementPost'
-import PostAnnouncement from './components/Announcement/PostAnnouncement'
+import AnnouncementPost from "./components/Announcement/AnnouncementPost";
+import PostAnnouncement from "./components/Announcement/PostAnnouncement";
 
 export default function Announcement() {
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/announcements/show/all")
+      .then((response) => {
+        setList(response.data);
+      });
+  }, []);
+
   return (
     <Box>
-      <Heading size='lg' mb={5}>Announcement</Heading>
+      <Heading size="lg" mb={5}>
+        Announcement
+      </Heading>
 
-      <Center flexDirection='column'>
+      <Center flexDirection="column">
         <PostAnnouncement />
-
-        <AnnouncementPost />
-        <AnnouncementPost />
-        <AnnouncementPost />
+        {list.map((index) => (
+          <AnnouncementPost data={index} />
+        ))}
       </Center>
     </Box>
-  )
+  );
 }

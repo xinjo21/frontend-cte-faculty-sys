@@ -11,39 +11,90 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
-import { HiOutlineDotsVertical } from 'react-icons/hi'
-import demopic from '../../../../media/demopic.png'
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
-export default function AnnouncementPost() {
+export default function AnnouncementPost({ data }) {
   return (
-    <Box bgColor='gray.50' my={5} p={5} borderRadius={25} boxShadow='md' w={['80vw', '75vw', '700px']}>
-      <Flex alignItems='center' mb={5}>
-        <Avatar name='Lastname, First Middle' size='sm' mr={2} />
+    <Box
+      bgColor="gray.50"
+      my={5}
+      p={5}
+      borderRadius={25}
+      boxShadow="md"
+      w={["80vw", "75vw", "700px"]}
+    >
+      <Flex alignItems="center" mb={5}>
+        <Avatar name="Admin, D" size="sm" mr={2} />
         <Box>
-          <Heading size='xs'>
-            Lastname, First Middle
-          </Heading>
-          <Text fontSize='xs' color='gray.500'>
-            2022-03-01 @ 9:00AM
+          <Heading size="xs">Teacher Education (Admin)</Heading>
+          <Text fontSize="xs" color="gray.500">
+            {data.created_at}
           </Text>
         </Box>
         <Spacer />
         <Menu>
-          <MenuButton as={IconButton} icon={<HiOutlineDotsVertical />} borderRadius={100} variant='ghost' />
+          <MenuButton
+            as={IconButton}
+            icon={<HiOutlineDotsVertical />}
+            borderRadius={100}
+            variant="ghost"
+          />
           <MenuList>
             <MenuItem>Update</MenuItem>
             <MenuItem>Delete</MenuItem>
           </MenuList>
         </Menu>
-
       </Flex>
-      <Heading size='xs' mb={2}>
-        Memorandum Order:
+      <Heading size="xs" mb={2}>
+        {data.announcementType}
       </Heading>
-      <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa odio labore a voluptatibus voluptatum ea tenetur quo nesciunt expedita qui possimus, iste delectus placeat sunt impedit enim. Voluptate, eum sit.</Text>
-      <Image src={demopic} my={2} />
+      <Text>{data.announcementDetails}</Text>
+      <Image src={"/images/" + data.announcementImage} my={2} />
     </Box>
-  )
+  );
+}
+
+{
+  /* <>
+      {list.map((index) => (
+        <Box
+          bgColor="gray.50"
+          my={5}
+          p={5}
+          borderRadius={25}
+          boxShadow="md"
+          w={["80vw", "75vw", "700px"]}
+        >
+          <Flex alignItems="center" mb={5}>
+            <Avatar name="Admin, D" size="sm" mr={2} />
+            <Box>
+              <Heading size="xs">Teacher Education (Admin)</Heading>
+              <Text fontSize="xs" color="gray.500">
+                {index.created_at}
+              </Text>
+            </Box>
+            <Spacer />
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                icon={<HiOutlineDotsVertical />}
+                borderRadius={100}
+                variant="ghost"
+              />
+              <MenuList>
+                <MenuItem>Update</MenuItem>
+                <MenuItem>Delete</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+          <Heading size="xs" mb={2}>
+            {index.announcementType}
+          </Heading>
+          <Text>{index.announcementDetails}</Text>
+          <Image src={"/images/" + index.announcementImage} my={2} />
+        </Box>
+      ))}
+    </> */
 }

@@ -11,62 +11,113 @@ import {
   ModalOverlay,
   ModalHeader,
   ModalCloseButton,
-  ModalBody, 
+  ModalBody,
   ModalFooter,
   ModalContent,
   useDisclosure,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
+
+import { react, useState } from "react";
+import reactDom from "react-dom";
+
+import axios from "axios";
 
 export default function PostAnnouncement() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  // Inputs
+  const [announcementType, setAnnouncementType] = useState("");
+  const [announcementDetails, setAnnouncementDetails] = useState("");
+  const [announcementImage, setAnnouncementImage] = useState("");
 
+  const Add = () => {
+    axios
+      .post("http://localhost:8000/api/announcements", {
+        announcementType: announcementType,
+        announcementDetails: announcementDetails,
+        announcementImage: announcementImage,
+      })
+      .then((response) => {
+        if (response) {
+          alert("SUCCESS");
+        } else {
+          alert("FAILED");
+        }
+      });
+  };
 
   return (
     <Box>
-      <Button w={['80vw', '75vw', '700px']} onClick={onOpen} colorScheme='blueCTE' >Post Announcement</Button>
-
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        size='xl'
+      <Button
+        w={["80vw", "75vw", "700px"]}
+        onClick={onOpen}
+        colorScheme="blueCTE"
       >
+        Post Announcement
+      </Button>
+
+      <Modal isOpen={isOpen} onClose={onClose} size="xl">
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader color='gray.700'>Post Announcements</ModalHeader>
+          <ModalHeader color="gray.700">Post Announcements</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack spacing={5}>
               <FormControl>
-                <FormLabel htmlFor='announcementType' fontSize='sm'>Announcement Type</FormLabel>
-                <Select placeholder='Select Type' size='sm' id='announcementType'>
-                  <option value="announcement">Announcement</option>
-                  <option value="memo">Memorandum Order</option>
-                  <option value="activity">Activity</option>
-                  <option value="request">Request</option>
+                <FormLabel htmlFor="announcementType" fontSize="sm">
+                  Announcement Type
+                </FormLabel>
+                <Select
+                  placeholder="Select Type"
+                  size="sm"
+                  id="announcementType"
+                  name="announcementType"
+                  onChange={(e) => setAnnouncementType(e.target.value)}
+                >
+                  <option value="Announcement">Announcement</option>
+                  <option value="Memorandum Order">Memorandum Order</option>
+                  <option value="Activity">Activity</option>
+                  <option value="Request">Request</option>
                 </Select>
               </FormControl>
 
               <FormControl>
-                <FormLabel htmlFor='postDetails' fontSize='sm'>Details</FormLabel>
-                <Textarea size='sm' id='postDetails' />
+                <FormLabel htmlFor="postDetails" fontSize="sm">
+                  Details
+                </FormLabel>
+                <Textarea
+                  size="sm"
+                  id="postDetails"
+                  name="AnnouncementDetails"
+                  onChange={(e) => setAnnouncementDetails(e.target.value)}
+                />
               </FormControl>
 
               <FormControl>
-                <FormLabel htmlFor='postPicture' fontSize='sm'>Upload Image</FormLabel>
-                <Input type='file' id='postPicture' />
+                <FormLabel htmlFor="postPicture" fontSize="sm">
+                  Upload Image
+                </FormLabel>
+                <Input
+                  type="file"
+                  id="postPicture"
+                  name="AnnouncementImage"
+                  onChange={(e) => setAnnouncementImage(e.target.files[0].name)}
+                />
               </FormControl>
             </Stack>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme='red' mr={2} onClick={onClose}>Discard</Button>
-            <Button colorScheme='blue'>Announce</Button>
+            <Button colorScheme="red" mr={2} onClick={onClose}>
+              Discard
+            </Button>
+            <Button colorScheme="blue" onClick={() => Add()}>
+              Announce
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
-  )
-
+  );
 }
 /* 
 function Announcment() {
