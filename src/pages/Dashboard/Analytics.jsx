@@ -27,13 +27,13 @@ export default function Analytics() {
       <Heading size='lg' mb={5}>Analytics</Heading>
       <Center flexDirection='column' alignItems='stretch'>
         <Center flexDirection={['column','row']} alignItems='stretch' alignContent='stretch' justifyContent='space-around'>
-          <Stack mb={5}>
+         {/*  <Stack mb={5}>
             <NumberCard cardName='Current Available Faculty' data='5' />
             <Spacer />
             <NumberCard cardName='On Class' data='12' />
             <Spacer />
             <NumberCard cardName='On Study Leave' data='12' />
-          </Stack>
+          </Stack> */}
 
           <EducationalBGCard />
           <DepartmentCard />

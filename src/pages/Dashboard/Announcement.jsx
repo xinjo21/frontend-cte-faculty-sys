@@ -13,13 +13,13 @@ import PostAnnouncement from './components/Announcement/PostAnnouncement'
 export default function Announcement() {
   const [list, setList] = useState([])
 
-  useEffect(() => {
+  /* useEffect(() => {
     axios
       .get('http://localhost:8000/api/announcement/show/all')
       .then((response) => {
         setList(response.data)
       })
-  }, [])
+  }, [list]) */
 
   return (
     <Box>
@@ -29,9 +29,9 @@ export default function Announcement() {
         <PostAnnouncement />
 
         {
-          list.map((index) => (
+          list.map((index) =>
             <AnnouncementPost data={index} />
-          ))
+          )
         }
       </Center>
     </Box>

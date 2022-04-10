@@ -87,22 +87,22 @@ function DataTable() {
           <ModalCloseButton />
           <ModalBody>
             <Stack spacing={5}>
-              <FormControl mb={5}>
+              <FormControl mb={5} isRequired>
                 <FormLabel htmlFor='firstName'>First Name</FormLabel>
                 <Input id='firstName' />
               </FormControl>
 
-              <FormControl mb={5}>
+              <FormControl mb={5} isRequired>
                 <FormLabel htmlFor='lastName'>Last Name</FormLabel>
                 <Input id='lastName' />
               </FormControl>
 
-              <FormControl mb={5}>
+              <FormControl mb={5} isRequired>
                 <FormLabel htmlFor='emailAd'>Email Address</FormLabel>
                 <Input id='emailAd' />
               </FormControl>
 
-              <FormControl>
+              <FormControl isRequired>
                 <FormLabel htmlFor='userType' fontSize='sm'>User Type</FormLabel>
                 <Select placeholder='Select Type' size='sm' id='userType'>
                   <option value="announcement">Admin</option>

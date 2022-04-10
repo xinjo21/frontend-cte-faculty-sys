@@ -20,28 +20,12 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 
-export default function PostAnnouncement() {
+export default function AddRequest() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const [announcementType, setAnnouncementType] = useState('')
-  const [announcementDetails, setAnnouncementDetails] = useState('')
-  const [announcementImage, setAnnouncementImage] = useState('')
-
-  const Add = () => {
-    axios
-      .post('http://localhost:8000/api/announcements', {
-        announcementType: announcementType,
-        announcementDetails: announcementDetails,
-        announcementImage: announcementImage,
-      })
-      .then((res) => {
-        res ? alert('Success') : alert('Failed')
-      })
-  }
 
   return (
     <Box>
-      <Button w={['80vw', '75vw', '700px']} onClick={onOpen} colorScheme='blueCTE' >Post Announcement</Button>
+      <Button w={['80vw', '75vw', '700px']} onClick={onOpen} colorScheme='blueCTE' >Add Request</Button>
 
       <Modal
         isOpen={isOpen}
@@ -50,34 +34,24 @@ export default function PostAnnouncement() {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader color='gray.700'>Post Announcements</ModalHeader>
+          <ModalHeader color='gray.700'>Add Request</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack spacing={5}>
-              <FormControl isRequired>
-                <FormLabel htmlFor='announcementType' fontSize='sm'>Announcement Type</FormLabel>
-                <Select placeholder='Select Type' size='sm' id='announcementType' name='announcementType' onChange={(e) => setAnnouncementType(e.target.value)}>
-                  <option value="announcement">Announcement</option>
-                  <option value="memo">Memorandum Order</option>
-                  <option value="activity">Activity</option>
-                  <option value="request">Request</option>
-                </Select>
-              </FormControl>
 
               <FormControl isRequired>
-                <FormLabel htmlFor='postDetails' fontSize='sm'>Details</FormLabel>
-                <Textarea size='sm' id='postDetails' name='AnnouncementDetails' onChange={(e) => setAnnouncementDetails(e.target.value)}/>
+                <FormLabel htmlFor='requestDetails' fontSize='sm'>Details</FormLabel>
+                <Textarea size='sm' id='requestDetails' name='requestDetails' />
               </FormControl>
-
               <FormControl>
-                <FormLabel htmlFor='postPicture' fontSize='sm'>Upload Image</FormLabel>
-                <Input type='file' id='postPicture' name='AnnouncementImage' onChange={(e) => setAnnouncementImage(e.target.files[0].name)}/>
+                <FormLabel htmlFor='requestFile' fontSize='sm'>Upload File</FormLabel>
+                <Input type='file' id='requestFile' name='requestFile' />
               </FormControl>
             </Stack>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme='red' mr={2} onClick={onClose}>Discard</Button>
-            <Button colorScheme='blue' onClick={() => Add()}>Announce</Button>
+            <Button colorScheme='blue'>Add Request</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
