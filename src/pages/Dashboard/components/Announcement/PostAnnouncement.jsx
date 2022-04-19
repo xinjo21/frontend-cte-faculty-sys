@@ -29,7 +29,7 @@ export default function PostAnnouncement() {
 
   const Add = () => {
     axios
-      .post('http://localhost:8000/api/announcements', {
+      .post('http://api.ctewmsufaculty.xyz/api/announcements', {
         announcementType: announcementType,
         announcementDetails: announcementDetails,
         announcementImage: announcementImage,

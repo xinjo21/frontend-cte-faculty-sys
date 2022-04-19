@@ -1,5 +1,5 @@
-import { ussEffect, useState, useEffect } from 'react'
-import { axios } from 'axios'
+import { useState, useEffect, useRef } from 'react'
+import axios from "axios";
 
 import {
   Box,
@@ -11,15 +11,13 @@ import AnnouncementPost from './components/Announcement/AnnouncementPost'
 import PostAnnouncement from './components/Announcement/PostAnnouncement'
 
 export default function Announcement() {
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     axios
-      .get('http://192.168.254.113:80/api/announcement/show/all')
-      .then((response) => {
-        setList(response.data)
-      })
-  }, [list]) */
+      .get("http://api.ctewmsufaculty.xyz/api/announcements/show/all")
+      .then((res) => setList(res.data))
+  }, []);
 
   return (
     <Box>

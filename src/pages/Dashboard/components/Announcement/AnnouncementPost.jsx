@@ -16,7 +16,7 @@ import {
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 import demopic from '../../../../media/demopic.png'
 
-export default function AnnouncementPost({data}) {
+export default function AnnouncementPost({ data }) {
   return (
     <Box bgColor='gray.50' my={5} p={5} borderRadius={25} boxShadow='md' w={['80vw', '75vw', '700px']}>
       <Flex alignItems='center' mb={5}>
@@ -26,7 +26,7 @@ export default function AnnouncementPost({data}) {
             Teacher Education(Admin)
           </Heading>
           <Text fontSize='xs' color='gray.500'>
-            {data.create_at}
+            {data.created_at}
           </Text>
         </Box>
         <Spacer />
@@ -45,7 +45,9 @@ export default function AnnouncementPost({data}) {
       <Text>
         {data.announcementDetails}
       </Text>
-      <Image src={'/images/' + data.announcementImage} my={2} />
+      <Image src={data.announcementImage} fallbackSrc='fallbackimg.jpg' my={2} />
+{/* 
+      <Image src={'/images/' + data.announcementImage} my={2} /> */}
     </Box>
   )
 }
