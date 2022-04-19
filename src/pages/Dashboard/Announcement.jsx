@@ -15,7 +15,7 @@ export default function Announcement() {
 
   /* useEffect(() => {
     axios
-      .get('http://localhost:8000/api/announcement/show/all')
+      .get('http://192.168.254.113:80/api/announcement/show/all')
       .then((response) => {
         setList(response.data)
       })

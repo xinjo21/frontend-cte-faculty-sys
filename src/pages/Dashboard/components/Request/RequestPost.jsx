@@ -15,7 +15,7 @@ import {
 
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 
-export default function RequestPost() {
+export default function RequestPost({data}) {
   return (
     <Box bgColor='gray.50' my={5} p={5} borderRadius={25} boxShadow='md' w={['80vw', '75vw', '700px']}>
       <Flex alignItems='center' mb={5}>

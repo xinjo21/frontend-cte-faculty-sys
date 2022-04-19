@@ -19,6 +19,7 @@ import {
   Center,
   Flex,
   Text,
+  Heading
 } from '@chakra-ui/react'
 
 export default function AddSchedule() {
@@ -38,12 +39,14 @@ export default function AddSchedule() {
           <ModalHeader color='gray.700'>Add Schedule</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Stack spacing={5}>
-              <FormControl mb={5}>
+            <Stack>
+              <FormControl >
                 <FormLabel htmlFor='className'>Class Name</FormLabel>
                 <Input id='className' />
               </FormControl>
-              <Center>
+              
+              <Text>Day </Text>
+              <Center pb={5}>
                 <CheckboxGroup colorScheme='blue'>
                   <Stack spacing={[3, 5]} direction={'row'}>
                     <Checkbox value='mon'>Mon</Checkbox>
@@ -56,6 +59,7 @@ export default function AddSchedule() {
                   </Stack>
                 </CheckboxGroup>
               </Center>
+
               <Flex direction='row'>
                 <FormControl mb={5} isRequired>
                   <FormLabel htmlFor='fromTime'>Start Time</FormLabel>
