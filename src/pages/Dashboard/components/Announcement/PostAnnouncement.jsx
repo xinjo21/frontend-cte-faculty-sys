@@ -27,7 +27,19 @@ export default function PostAnnouncement() {
   const [announcementDetails, setAnnouncementDetails] = useState('')
   const [announcementImage, setAnnouncementImage] = useState('')
 
-  const Add = () => {
+  async function addAnnouncement() {
+    await fetch('http://api.ctewmsufaculty.xyz/api/announcement/store', {
+      method: "POST",
+      
+      body: ({
+        "announcement_type": announcementType,
+        "announcement_details": announcementDetails,
+        "announcement_image": announcementImage,
+      })
+    })
+    console.log(announcementType, announcementDetails)
+  }
+  /* const Add = () => {
     axios
       .post('http://api.ctewmsufaculty.xyz/api/announcements', {
         announcementType: announcementType,
@@ -37,7 +49,7 @@ export default function PostAnnouncement() {
       .then((res) => {
         res ? alert('Success') : alert('Failed')
       })
-  }
+  } */
 
   return (
     <Box>
@@ -71,13 +83,13 @@ export default function PostAnnouncement() {
 
               <FormControl>
                 <FormLabel htmlFor='postPicture' fontSize='sm'>Upload Image</FormLabel>
-                <Input type='file' id='postPicture' name='AnnouncementImage' onChange={(e) => setAnnouncementImage(e.target.files[0].name)}/>
+                <Input type='file' id='postPicture' name='AnnouncementImage' onChange={(e) => setAnnouncementImage(e.target.files[0])}/>
               </FormControl>
             </Stack>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme='red' mr={2} onClick={onClose}>Discard</Button>
-            <Button colorScheme='blue' onClick={() => Add()}>Announce</Button>
+            <Button colorScheme='blue' onClick={() => addAnnouncement()}>Announce</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

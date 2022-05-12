@@ -46,3 +46,37 @@ ADDITIONAL ADMIN:
   - User list
   - Memos forward and receive
   - Add new user
+
+----------
+
+Announcement: # Admins only
+  - Add Post
+  - Edit Post
+  - View Post
+  - Delete Post
+
+Users:
+  - Add user
+  - Edit user
+  - view user
+  - delete user
+  
+Personal Information:
+  - Add
+  - Edit
+  - View
+    - Get total bachelors, master, doctor
+    - Get total secondary, elementary, special
+    - Get faculty in service
+
+Request: # Faculty req
+  - Add req
+  - Edit req
+  - View req
+  - delete req
+
+Schedule:
+  - Add
+  - Edit
+  - View
+  - Delete

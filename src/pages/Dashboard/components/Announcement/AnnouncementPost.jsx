@@ -40,12 +40,12 @@ export default function AnnouncementPost({ data }) {
 
       </Flex>
       <Heading size='xs' mb={2}>
-        {data.announcementType}
+        {data.announcement_type}
       </Heading>
       <Text>
-        {data.announcementDetails}
+        {data.announcement_details}
       </Text>
-      <Image src={data.announcementImage} fallbackSrc='fallbackimg.jpg' my={2} />
+      <Image src={data.announcement_image} fallbackSrc='fallbackimg.jpg' my={2} />
 {/* 
       <Image src={'/images/' + data.announcementImage} my={2} /> */}
     </Box>

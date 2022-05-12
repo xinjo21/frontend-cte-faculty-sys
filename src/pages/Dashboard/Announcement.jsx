@@ -15,7 +15,7 @@ export default function Announcement() {
 
   useEffect(() => {
     axios
-      .get("http://api.ctewmsufaculty.xyz/api/announcements/show/all")
+      .get("http://api.ctewmsufaculty.xyz/api/announcement/show")
       .then((res) => setList(res.data))
   }, []);
 

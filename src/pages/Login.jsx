@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   Center,
   Box,
@@ -14,11 +15,45 @@ import {
   Divider
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CTE_logo from '../media/cte_logo.png'
 
 function Login() {
+  const navigate = useNavigate()
+
   const [show, setShow] = useState(false)
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  async function login() {
+    console.log(email, password)
+    axios.post('http://api.ctewmsufaculty.xyz/api/login', {
+      email: email,
+      password: password
+    }).then((res) => {
+      res ? alert('Success') : alert('failed')
+    })
+    /* await fetch('http://api.ctewmsufaculty.xyz/api/login', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: ({
+        'email': email,
+        'password': password,
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.email) {
+          sessionStorage.setItem('email', data.email)
+          navigate('/dashboard/announcement')
+          alert('inside if')
+        } else {
+          alert('Invalid')
+        }
+      }) */
+  }
 
   return (
     <Center bg='blueGrad' h='100vh' w='100vw' flexDirection='column'>
@@ -45,7 +80,7 @@ function Login() {
                 Email
               </Heading>
             </FormLabel>
-            <Input id='email' type='email' />
+            <Input id='email' type='email' onChange={(e) => setEmail(e.target.value)} />
           </FormControl>
 
           <FormControl py={5}>
@@ -56,16 +91,18 @@ function Login() {
             </FormLabel>
 
             <InputGroup>
-              <Input id='password' type={show ? 'text' : 'password'} />
+              <Input id='password' type={show ? 'text' : 'password'} onChange={(e) => setPassword(e.target.value)} />
               <InputRightElement width='4.5rem'>
                 <Button size='sm' h='1.75rem' onClick={() => setShow(!show)}>{show ? 'Hide' : 'Show'}</Button>
               </InputRightElement>
             </InputGroup>
           </FormControl>
 
-          <Link to='/dashboard/announcement'>
+          <Button w='100%' colorScheme='blue' onClick={() => login()}>Login</Button>
+
+          {/* <Link to='/dashboard/announcement'>
             <Button w='100%' colorScheme='blue'>Login</Button>
-          </Link>
+          </Link> */}
 
 
           <Box py={5}>
