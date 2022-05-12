@@ -31,7 +31,9 @@ function Login() {
       email: email,
       password: password
     }).then((res) => {
-      res ? alert('Success') : alert('failed')
+      console.log(res)
+      sessionStorage.setItem('user', email)
+      navigate('/dashboard/announcement')
     })
     /* await fetch('http://api.ctewmsufaculty.xyz/api/login', {
       method: 'POST',
@@ -102,8 +104,7 @@ function Login() {
 
           {/* <Link to='/dashboard/announcement'>
             <Button w='100%' colorScheme='blue'>Login</Button>
-          </Link> */}
-
+          </Link> */}s
 
           <Box py={5}>
             <Center>

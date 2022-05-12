@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import {
   Box,
   Flex,
@@ -11,13 +12,22 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Center
 } from '@chakra-ui/react'
 
 import { HiOutlineDotsVertical } from 'react-icons/hi'
-import demopic from '../../../../media/demopic.png'
+// import demopic from '../../../../media/demopic.png'
 
-export default function AnnouncementPost({ data }) {
+export default function AnnouncementPost({post}) {
+
+  function deleteAnnouncement() {
+    fetch(`http://api.ctewmsufaculty.xyz/api/announcement/destroy/${post.announcement_id}`, {
+      method: "DELETE",
+    })
+  }
+
   return (
+
     <Box bgColor='gray.50' my={5} p={5} borderRadius={25} boxShadow='md' w={['80vw', '75vw', '700px']}>
       <Flex alignItems='center' mb={5}>
         <Avatar name='Lastname, First Middle' size='sm' mr={2} />
@@ -26,7 +36,7 @@ export default function AnnouncementPost({ data }) {
             Teacher Education(Admin)
           </Heading>
           <Text fontSize='xs' color='gray.500'>
-            {data.created_at}
+            {post.created_at}
           </Text>
         </Box>
         <Spacer />
@@ -34,20 +44,21 @@ export default function AnnouncementPost({ data }) {
           <MenuButton as={IconButton} icon={<HiOutlineDotsVertical />} borderRadius={100} variant='ghost' />
           <MenuList>
             <MenuItem>Update</MenuItem>
-            <MenuItem>Delete</MenuItem>
+            <MenuItem onClick={() => deleteAnnouncement()}>Delete</MenuItem>
           </MenuList>
         </Menu>
 
       </Flex>
       <Heading size='xs' mb={2}>
-        {data.announcement_type}
+        {post.announcement_type}
       </Heading>
       <Text>
-        {data.announcement_details}
+        {post.announcement_details}
       </Text>
-      <Image src={data.announcement_image} fallbackSrc='fallbackimg.jpg' my={2} />
-{/* 
+      <Image src={post.announcement_image} fallbackSrc='fallbackimg.jpg' my={2} />
+      {/* 
       <Image src={'/images/' + data.announcementImage} my={2} /> */}
     </Box>
   )
+
 }

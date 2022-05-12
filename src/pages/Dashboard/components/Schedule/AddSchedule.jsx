@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Box,
   Select,
@@ -21,9 +22,27 @@ import {
   Text,
   Heading
 } from '@chakra-ui/react'
+import axios from 'axios'
 
 export default function AddSchedule() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const [class_name, setClass_Name] = useState()
+  const [day, setDay] = useState()
+  const [startTime, setStartTime] = useState()
+  const [endTime, setEndTime] = useState()
+
+  function addSchedule() {
+    axios.post('http://api.ctewmsufaculty.xyz/api/schedules/store',
+      {
+          "schedule_class_name": class_name,
+          "schedule_day": day,
+          "schedule_start_time": startTime,
+          "schedule_end_time": endTime,
+      })
+
+    onClose()
+  }
 
   return (
     <Box>
@@ -42,12 +61,12 @@ export default function AddSchedule() {
             <Stack>
               <FormControl >
                 <FormLabel htmlFor='className'>Class Name</FormLabel>
-                <Input id='className' />
+                <Input id='className' onChange={(e) => setClass_Name(e.target.value)} />
               </FormControl>
-              
+
               <Text>Day </Text>
               <Center pb={5}>
-                <CheckboxGroup colorScheme='blue'>
+                <CheckboxGroup colorScheme='blue' onChange={(e) => setDay(e.target.value)}> {/* // recheck value */}
                   <Stack spacing={[3, 5]} direction={'row'}>
                     <Checkbox value='mon'>Mon</Checkbox>
                     <Checkbox value='tue'>Tue</Checkbox>
@@ -63,7 +82,7 @@ export default function AddSchedule() {
               <Flex direction='row'>
                 <FormControl mb={5} isRequired>
                   <FormLabel htmlFor='fromTime'>Start Time</FormLabel>
-                  <Select id='fromTime'>
+                  <Select id='fromTime' onChange={(e) => setStartTime(e.target.value)}>
                     <option value="7:00AM">7:00AM</option>
                     <option value="7:30AM">7:30AM</option>
                     <option value="8:00AM">8:00AM</option>
@@ -98,7 +117,7 @@ export default function AddSchedule() {
                 <Text m={5}>to</Text>
                 <FormControl mb={5} isRequired>
                   <FormLabel htmlFor='toTime'>End Time</FormLabel>
-                  <Select id='toTime'>
+                  <Select id='toTime' onChange={(e) => setEndTime(e.target.value)}>
                     <option value="7:00AM">7:00AM</option>
                     <option value="7:30AM">7:30AM</option>
                     <option value="8:00AM">8:00AM</option>
@@ -135,7 +154,7 @@ export default function AddSchedule() {
           </ModalBody>
           <ModalFooter>
             <Button colorScheme='red' mr={2} onClick={onClose}>Discard</Button>
-            <Button colorScheme='blue' >Add Schedule</Button>
+            <Button colorScheme='blue' onClick={() => addSchedule()}>Add Schedule</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

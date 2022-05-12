@@ -17,7 +17,7 @@ export default function Announcement() {
     axios
       .get("http://api.ctewmsufaculty.xyz/api/announcement/show")
       .then((res) => setList(res.data))
-  }, []);
+  }, [list]);
 
   return (
     <Box>
@@ -25,10 +25,9 @@ export default function Announcement() {
 
       <Center flexDirection='column'>
         <PostAnnouncement />
-
         {
           list.map((index) =>
-            <AnnouncementPost data={index} />
+            <AnnouncementPost key={index.announcement_id} post={index} />
           )
         }
       </Center>
